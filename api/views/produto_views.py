@@ -6,8 +6,10 @@ from ..entidades import produto
 from ..services import produto_service
 from ..pagination import paginate
 from ..models.produto_model import Produto
+from flask_jwt_extended import jwt_required
 
 class ProdutoList(Resource):
+    @jwt_required
     def get(self):
         #produtos = produto_service.listar_produtos()
         ps = produto_schema.ProdutoSchema(many=True)

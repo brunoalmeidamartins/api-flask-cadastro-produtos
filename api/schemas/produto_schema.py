@@ -2,7 +2,7 @@ from api import ma
 from ..models import produto_model
 from marshmallow import fields
 
-#print(dir(ma))
+
 class ProdutoSchema(ma.SQLAlchemySchema):
     class Meta:
         model = produto_model.Produto
