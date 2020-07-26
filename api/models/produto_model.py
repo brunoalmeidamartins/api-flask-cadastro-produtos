@@ -7,3 +7,4 @@ class Produto(db.Model):
     nome = db.Column(db.String(100), nullable= False)
     descricao = db.Column(db.String(250), nullable=False)
     data_validade = db.Column(db.Date, nullable=False)
+    valor = db.Column(db.Float(precision=2), nullable=False)

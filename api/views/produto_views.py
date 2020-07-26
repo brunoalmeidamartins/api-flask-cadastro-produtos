@@ -25,7 +25,8 @@ class ProdutoList(Resource):
             nome = request.json["nome"]
             descricao = request.json["descricao"]
             data_validade = request.json["data_validade"]
-            produto_novo = produto.Produto(nome=nome, descricao=descricao, data_validade=data_validade)
+            valor = request.json["valor"]
+            produto_novo = produto.Produto(nome=nome, descricao=descricao, data_validade=data_validade, valor=valor)
             result = produto_service.cadastrar_produto(produto_novo)
             return make_response(ps.jsonify(result), 201)
 class ProdutoDetail(Resource):
@@ -48,8 +49,9 @@ class ProdutoDetail(Resource):
             nome = request.json["nome"]
             descricao = request.json["descricao"]
             data_validade = request.json["data_validade"]
+            valor = request.json["valor"]
             produto_novo = produto.Produto(nome=nome, descricao=descricao,
-                                            data_validade=data_validade)
+                                            data_validade=data_validade, valor=valor)
             produto_service.editar_produto(produto_db, produto_novo)
             produto_atualizado = produto_service.listar_produto_id(id)
             return make_response(ps.jsonify(produto_atualizado), 200)

@@ -6,8 +6,9 @@ from marshmallow import fields
 class ProdutoSchema(ma.SQLAlchemySchema):
     class Meta:
         model = produto_model.Produto
-        fields = ("id", "nome", "descricao", "data_validade")
+        fields = ("id", "nome", "descricao", "data_validade", "valor")
     
     nome = fields.String(required=True)
     descricao = fields.String(required=True)
     data_validade = fields.Date(required=True)
+    valor = fields.Float(required=True)

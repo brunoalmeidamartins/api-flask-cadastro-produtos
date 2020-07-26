@@ -1,8 +1,9 @@
 class Produto():
-    def __init__(self, nome, descricao, data_validade):
+    def __init__(self, nome, descricao, data_validade, valor):
         self.__nome = nome
         self.__descricao = descricao
         self.__data_validade = data_validade
+        self.__valor = valor
 
     @property
     def nome(self):
@@ -27,3 +28,11 @@ class Produto():
     @data_validade.setter
     def data_validade(self, data_validade):
         self.__data_validade = data_validade
+
+    @property
+    def valor(self):
+        return self.__valor
+    
+    @valor.setter
+    def valor(self, valor):
+        self.__valor = valor
