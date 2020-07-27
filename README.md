@@ -28,9 +28,9 @@
 ## Rotas privadas da API
 - /produtos METHOD = GET => Utilizada para obter a lista de produtos já página.
 - /produtos METHOD = POST => Utilizada para criar um produto novo.
-- /produtos/<id> METHOD = GET => Utilizada para obter um produto com o id do parâmetro.
-- /produtos/<id> METHOD = PUT => Utilizada para editar um produto com o id do parâmetro.
-- /produtos/<id> METHOD = DELETE => Utilizada deletar um produto com o id do parâmetro.
+- /produtos/{id} METHOD = GET => Utilizada para obter um produto com o id do parâmetro.
+- /produtos/{id} METHOD = PUT => Utilizada para editar um produto com o id do parâmetro.
+- /produtos/{id} METHOD = DELETE => Utilizada deletar um produto com o id do parâmetro.
 
 ## Autenticação das Rotas Privadas
 Ao utilizar a rota /login usando um usuário cadastrado no banco de dados, a API lhe responderá com um 'access_token' válido por 5 minutos. Sendo assim, todas as rotas privadas deverá possuir em seu headers o parâmetro 'Authorization' com o valor 'Bearer access_token'
