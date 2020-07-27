@@ -20,9 +20,6 @@ services:
             - db-mysql:/var/lib/mysql
         networks: 
             - flask-api-network
-        #command: ["--default-authentication-plugin=mysql_native_password"]
-        #entrypoint: 
-        #    - sh /app/migrate.sh
 networks: 
     flask-api-network:
         driver: bridge
