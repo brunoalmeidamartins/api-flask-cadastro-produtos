@@ -9,6 +9,38 @@ from datetime import timedelta
 
 class LoginList(Resource):
     def post(self):
+        """
+        Esta rota é responsável por efetuar o login do usuário
+        ---
+        parameters:
+         - in: body
+           name: Usuario
+           description: Fazer login de um usuário já cadastrado
+           schema:
+             type: object
+             required:
+               - email
+               - senha
+             properties:
+               email:
+                 type: string
+               senha:
+                 type: string
+        responses:
+          200:
+            description: Login efetuado com sucesso
+            schema:
+              id: Login
+              properties:
+                access_token:
+                  type: string
+                message:
+                  type: string
+          400:
+            description: Ocorreu um erro de validação
+          401:
+            description: Credenciais inválidas
+        """
         ls = LoginSchema()
         validate = ls.validate(request.json)
         if validate:
