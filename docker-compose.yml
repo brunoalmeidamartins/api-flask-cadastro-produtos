@@ -4,17 +4,28 @@ services:
     flask-api:
         build: .
         ports:
-            - "5005:5000"
+            - "5000:5000"
         depends_on: 
             - mysqlsrv
+        networks: 
+            - flask-api-network
     mysqlsrv:
-        image: mysql:5.7
+        image: mysql:5.7.31
         environment: 
-            MYSQL_ROOT_PASSWORD: "senhasecreta"
+            MYSQL_ROOT_PASSWORD: senhasecreta
+            MYSQL_DATABASE: flask_api
         ports:
             - "3307:3306"
         volumes:
-            - db_mysql:/var/lib/mysql
+            - db-mysql:/var/lib/mysql
+        networks: 
+            - flask-api-network
+        #command: ["--default-authentication-plugin=mysql_native_password"]
+        #entrypoint: 
+        #    - sh /app/migrate.sh
+networks: 
+    flask-api-network:
+        driver: bridge
 
 volumes:
-    db_mysql:
+    db-mysql:

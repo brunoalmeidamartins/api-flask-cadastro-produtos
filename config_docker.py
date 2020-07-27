@@ -1,10 +1,10 @@
 DEBUG = True
 
-USERNAME = 'administrador'
+USERNAME = 'root'
 PASSWORD = 'senhasecreta'
-SERVER = 'localhost'
+SERVER = 'mysqlsrv'
 DB = 'flask_api'
-PORT = 3307
+PORT = 3306
 
 SQLALCHEMY_DATABASE_URI = f'mysql://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/{DB}'
 SQLALCHEMY_TRACK_MODIFICATIONS = True

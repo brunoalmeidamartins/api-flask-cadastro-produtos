@@ -1,12 +1,20 @@
 FROM python:3.6.11-stretch
 RUN apt-get update && apt-get upgrade -y
-COPY api /var/www/
-COPY migrations /var/www/
-COPY config_docker.py /var/www/config.py
-COPY requirements.txt /var/www/requirements.txt
-COPY run.py /var/www/run.py
-WORKDIR /var/www
-RUN pip install -r /var/www/requirements.txt
-RUN export FLASK_API=/var/www/api/__init__.py && flask db init && flask db migrate && flask db upgrade
+RUN mkdir -p /app/
+WORKDIR /app/
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r requirements.txt
+COPY api /app/api
+#COPY migrations /app/migrations
+COPY config_docker.py /app/config.py
+COPY run.py /app/run.py
+COPY wait-for-it.sh /app/wait-for-it.sh
+COPY deploy.sh /app/deploy.sh
+RUN chmod +x wait-for-it.sh && chmod +x deploy.sh
+#ENV FLASK_APP=/app/api/__init__.py
+#RUN flask routes
+#RUN flask db migrate && flask db upgrade
+#ENTRYPOINT [ "sh", "/app/wait-for-it.sh", "--host=mysqlsrv", "--port:3306", "--", "./app//migrate.sh" ]
+#ENTRYPOINT [ "sh", "/app/migrate.sh" ]
 EXPOSE 5000
-CMD ["python", "run.py"]
+CMD ["sh", "deploy.sh"]
