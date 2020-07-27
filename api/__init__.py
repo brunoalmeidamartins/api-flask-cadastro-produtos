@@ -8,6 +8,7 @@ from flasgger import Swagger
 
 app = Flask(__name__)
 app.config.from_object('config')
+#app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 migrate = Migrate(app, db)
