@@ -56,7 +56,7 @@ class LoginList(Resource):
                 )
                 return make_response(
                     jsonify({
-                        "access_token":access_token,
+                        "access_token": access_token,
                         "message": "login realizado com sucesso"
                     }), 200
                 )
