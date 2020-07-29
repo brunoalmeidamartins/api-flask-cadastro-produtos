@@ -20,6 +20,7 @@ def editar_produto(produto_bd, produto_novo):
     produto_bd.nome = produto_novo.nome
     produto_bd.descricao = produto_novo.descricao
     produto_bd.data_validade = produto_novo.data_validade
+    produto_bd.valor = produto_novo.valor
     db.session.commit()
 
 def remover_produto(produto):

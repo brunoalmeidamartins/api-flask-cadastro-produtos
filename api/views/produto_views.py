@@ -139,7 +139,7 @@ class ProdutoDetail(Resource):
         ps = produto_schema.ProdutoSchema()
         return make_response(ps.jsonify(produto), 200)
 
-    @jwt_required
+    #@jwt_required
     def put(self, id):
         """
         Edita o produto que possui o ID passado com parâmetro
